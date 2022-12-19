@@ -1,0 +1,59 @@
+.sdw{
+    box-shadow: 12px 12px;
+    border-radius: 10px;
+}
+
+.sdw-azure{
+    box-shadow: 12px 12px;
+    border-radius: 10px;
+    background-color: #f6f6f6;
+    padding: 10px;
+}
+
+.btn-sdw{
+    border: 1px;
+    box-shadow: 7px 7px;
+    border-radius: 10px;
+    width: 100px;
+}
+
+.btn-sdw-aqua{
+    box-shadow: 7px 7px;
+    border: 1px;
+    border-radius: 10px;
+    background-color: aqua;
+    width: 100px;
+}
+
+.btn-sdw-aqua:hover{
+    background-color: aqua;
+}
+
+.form-label{
+    margin-left: 10px;
+    margin-bottom: 50px;
+}
+
+.form-margin{
+    margin: 20px;
+    margin-bottom: 30px;
+}
+
+.btn-sdw-group {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.btn-sdw-group .btn-sdw{
+    width: 150px;
+}
+
+
+.form{
+    border: none;
+    border-bottom: 1px solid #000;
+    background-color: #f6f6f6;
+    display: block;
+    margin-left: 10px;
+    width:1000px;
+}
