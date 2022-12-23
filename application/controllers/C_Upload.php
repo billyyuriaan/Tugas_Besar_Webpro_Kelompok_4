@@ -5,7 +5,7 @@ class C_Upload extends CI_Controller {
         public function __construct()
         {
                 parent::__construct();
-               //lakukan load helper [form & url]
+               
                $this->load->helper("form");
                $this->load->helper("url");
                $this->load->model("User");
@@ -32,7 +32,6 @@ class C_Upload extends CI_Controller {
 
                 $this->load->library('upload', $config);
 
-                //lengkapi kondisi berikut
                 if ( ! $this->upload->do_upload('userfile') && $this->form_validation->run() == FALSE)
                 {
                         $data = [
@@ -42,16 +41,25 @@ class C_Upload extends CI_Controller {
                         $this->load->view('pages/auth/register', $data);
 
                 }else{
-                        $this->User->createUser();
 
-                        $data = [
-                                "data" => $this->upload->data(),
-                                "title" => "Dashboard"
-                        ];
+                        if ($this->User->checkEmailAvailable($this->input->post("email"))) {
+                                $this->User->createUser();
 
-                        $this->session->set_flashdata("message", "Register Success");
+                                $data = [
+                                        "data" => $this->upload->data(),
+                                        "title" => "Dashboard"
+                                ];
 
-                        $this->load->view("V_Upload_success", $data);
+                                $this->session->set_flashdata("message", "Register Success");
+
+                                $this->load->view("pages/auth/register", $data);
+                        } else {
+                                $data = [
+                                        "error" => "User Email Is Already Exist"
+                                ];
+        
+                                $this->load->view('pages/auth/register', $data);
+                        }
                 }
         }
 }

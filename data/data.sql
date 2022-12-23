@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS user (
     userId INT NOT NULL AUTO_INCREMENT,
-    email VARCHAR(255),
+    email VARCHAR(255) ,
     password VARCHAR(255),
     PRIMARY KEY (userId)
 );
@@ -16,6 +16,8 @@ CREATE TABLE IF NOT EXISTS donate (
   donateDate VARCHAR(255),
   FOREIGN KEY (userId) REFERENCES user(userId)
 );
+
+ALTER TABLE user ADD UNIQUE (email);
 
 
 INSERT INTO user (userId,email,password) VALUES (1,"dummy@email.com", "5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8");

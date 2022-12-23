@@ -14,6 +14,10 @@ class Pages extends CI_Controller{
             "title" => "Donation Corp."
         ];
 
-        $this->load->view("pages/index", $data);
+        if($this->session->has_userdata("email")){
+            $this->load->view("pages/index", $data);
+        }else{
+            $this->load->view("pages/index", $data);
+        }
     }
 }

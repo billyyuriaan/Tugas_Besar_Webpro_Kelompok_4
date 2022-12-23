@@ -39,8 +39,28 @@ class User extends CI_Model{
         }
     }
 
-    public function FunctionName()
+    public function getUserByEmail($email)
     {
+        $this->db->select("email");
+        $this->db->where("email", $email);
+
+        $query = $this->db->get("user");
+
+        return $query->result();
+    }
+    
+    public function checkEmailAvailable($email)
+    {
+        $this->db->select("*");
+        $this->db->where("email", $email);
+
+        $query = $this->db->get("user");
+
+        if ($query->num_rows() == 1) {
+            return FALSE;
+        } else {
+            return TRUE;
+        }
         
     }
 }
