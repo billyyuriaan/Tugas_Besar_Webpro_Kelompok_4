@@ -12,10 +12,12 @@ class User extends CI_Model{
     {
         $email = $this->input->post('email');
         $password = sha1($this->input->post("password"));
+        $picture = $this->upload->data()['file_name'];
 
         $data = [
             "email" => $email,
-            "password" => $password
+            "password" => $password,
+            "picture" => "http://localhost:8000/assets/uploads/" . $picture
         ];
 
         $this->db->insert("user", $data);
@@ -53,6 +55,7 @@ class User extends CI_Model{
     {
         $this->db->select("*");
         $this->db->where("email", $email);
+        $this->db->limit(1);
 
         $query = $this->db->get("user");
 

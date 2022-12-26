@@ -24,19 +24,26 @@ class Login extends CI_Controller{
 
 
         if ($this->form_validation->run() == FALSE) {
-               $this->load->view("pages/login");
+                $data = [
+                    "title" => "Login",
+                    "error" => "Failed To Login, Wrong Password Or Email, Please Try Again"
+                ];
+               $this->load->view("pages/auth/login", $data);
         } else{
             if ($this->User->checkUser()) {
                 $data = $this->user->getUserByEmail($this->input->post("email"));
 
-                $this->session->set_userdata("user", sha1($data[0]["email"]));
+                $this->session->set_userdata("user", $data[0]["email"]);
 
-                $this->load->view("");
+                redirect(base_url());
 
             } else{
-                $this->session->set_flashdata("message", "Login Failed");
-
-                $this->load->view("pages/login");
+                $data = [
+                    "title" => "Login",
+                    "error" => "Failed To Login, Wrong Password Or Email, Please Try Again"
+                ];
+                
+               $this->load->view("pages/auth/login", $data);
             }
             
         }

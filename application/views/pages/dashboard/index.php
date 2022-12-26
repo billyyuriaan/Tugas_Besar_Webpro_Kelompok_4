@@ -48,12 +48,17 @@
 <body>
     <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 my-3">
-            <div class="col"></div>
+            <div class="col">
+                <form action="">
+                    <button type="submit" class="btn btn-sdw" style="margin-right: 7px; align-item: center; border: 1px solid #000;">Log Out</button>
+                    <a href="<?= base_url() ?>login" class="btn btn-sdw-aqua">History</a>
+                </form>
+            </div>
             <div class="col"></div>
             <div class="col"></div>
             <div class="col">
-                <a href="<?= base_url() ?>register" class="btn btn-sdw" style="margin-right: 7px; align-item: center; border: 1px solid #000;">Register</a>
-                <a href="<?= base_url() ?>login" class="btn btn-sdw-aqua">Login</a>
+                <span style="margin-right: 17px;">Hello, <?= $this->session->email ?></span>
+                <img src="<?= base_url() ?>assets/uploads/gif.gif" alt="Profile Picture" class="avatar">    
             </div>
         </div>
         <br><br><br>
