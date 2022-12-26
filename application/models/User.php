@@ -43,7 +43,7 @@ class User extends CI_Model{
 
     public function getUserByEmail($email)
     {
-        $this->db->select("email");
+        $this->db->select("*");
         $this->db->where("email", $email);
 
         $query = $this->db->get("user");
@@ -64,6 +64,21 @@ class User extends CI_Model{
         } else {
             return TRUE;
         }
-        
+    }
+
+    public function login()
+    {
+        $this->db->select("*");
+        $this->db->where("email", $this->input->post("email"));
+        $this->db->where("password", sha1($this->input->post("password")));
+        $this->db->limit(1);
+
+        $query = $this->db->get("user");
+
+        if ($query->num_rows() == 1) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
     }
 }

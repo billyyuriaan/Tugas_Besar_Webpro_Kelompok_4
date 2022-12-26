@@ -49,22 +49,21 @@
     <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 my-3">
             <div class="col">
-                <form action="">
-                    <button type="submit" class="btn btn-sdw" style="margin-right: 7px; align-item: center; border: 1px solid #000;">Log Out</button>
-                    <a href="<?= base_url() ?>login" class="btn btn-sdw-aqua">History</a>
-                </form>
+                
+                <a href="<?= base_url() ?>logout" class="btn btn-sdw" style="margin-right: 7px; align-item: center; border: 1px solid #000;">Log Out</a>
+                <a href="<?= base_url() ?>history" class="btn btn-sdw-aqua">History</a>
             </div>
             <div class="col"></div>
             <div class="col"></div>
             <div class="col">
-                <span style="margin-right: 17px;">Hello, <?= $this->session->email ?></span>
-                <img src="<?= base_url() ?>assets/uploads/gif.gif" alt="Profile Picture" class="avatar">    
+                <span>Hello, <?= $this->session->user ?></span>
+                <img src="<?= $data[0]->picture ?>" alt="Profile Picture" class="avatar">
             </div>
         </div>
         <br><br><br>
         <div class="row justify-content-center my-3 sdw-azure">
             <div class="col">
-                <form action="">
+                <form action="<?= base_url() ?>donate" method="POST">
                     <div class="form-margin">
                         <label for="nominal" class="form-label">Nominal : </label>
                         <input type="text" name="nominal" id="nominal" class="form" placeholder="Ketik Jumlah Dukungan">
@@ -92,6 +91,9 @@
                     <div class="form-margin">
                         <label for="message" class="form-label">Message : <span style="color: red;">*</span></label>
                         <input type="text" name="message" id="message" class="form" placeholder="Aku Alex">
+                    </div>
+                    <div class="form-margin text-end">
+                        <button type="submit" class="btn btn-sdw-aqua">Donate</button>
                     </div>
                 </form>
                 <br><br><br><br>     

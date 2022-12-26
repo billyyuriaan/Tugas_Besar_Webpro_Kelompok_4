@@ -51,7 +51,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
 */
 $route['default_controller'] = "Pages/index"; 
 $route['login'] = "Pages/login";
+$route['donate'] = "DonateController";
 $route['logout'] = "Auth/logout";
+$route['login/post'] = "Auth/login";
+$route['history'] = "Pages/history";
 $route['register'] = "C_Upload";
 $route['C_Upload/do_upload'] = "C_Upload/do_upload";
 $route['404_override'] = '';

@@ -45,7 +45,7 @@
                             <?= $error ?>
                     </div>
                 <?php endif ?>
-                <form action="">
+                <form action="<?= base_url() ?>login/post" method="POST">
                     <div class="form-margin">
                         <label for="email" class="form-label">Email : <span style="color: red;">*</span></label>
                         <input type="email" name="email" id="email" class="form" placeholder="Alex@gmail.com">
