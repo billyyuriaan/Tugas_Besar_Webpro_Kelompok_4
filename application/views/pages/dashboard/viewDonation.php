@@ -43,13 +43,13 @@
         </div>
         <br><br><br>
         <div class="row justify-content-center my-3">
-            <?php if($this->session->has_flasdata("error")) : ?>
+            <?php if($this->session->flashdata("error")) : ?>
                 <div class="alert alert-warning text-center" role="alert">
                         <?= $this->session->flashdata("error") ?>
                 </div>
             <?php endif?>
 
-            <?php if($this->session->has_flasdata("message")) : ?>
+            <?php if($this->session->flashdata("message")) : ?>
                 <div class="alert alert-warning text-center" role="alert">
                         <?= $this->session->flashdata("message") ?>
                 </div>
