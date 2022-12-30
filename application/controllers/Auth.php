@@ -24,6 +24,7 @@ class Auth extends CI_Controller{
         } else{
             if ($this->User->login()) {
                 $this->session->set_userdata("user", $this->input->post("email"));
+                $this->session->set_userdata("type", $this->User->getUserByEmail($this->input->post("email"))[0]->userType);
 
                 redirect(base_url());
 

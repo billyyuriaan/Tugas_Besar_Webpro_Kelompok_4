@@ -37,7 +37,7 @@ class Donate extends CI_Model{
             "message" => $this->input->post("message"),
             "alias" => $this->input->post("from"),
             "PayMethode" => "GOPAY",
-            "donateDate" => time()
+            "donateDate" => $this->input->post("time")
         ];
 
         $this->db->insert("donate", $data);

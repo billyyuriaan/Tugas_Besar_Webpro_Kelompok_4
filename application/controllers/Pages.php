@@ -41,13 +41,25 @@ class Pages extends CI_Controller{
     public function history()
     {
         if ($this->session->has_userdata("user")) {
-            $data = [
-                "title" => "Login Donation Corp.",
-                "datas" => $this->Donate->getByEmail($this->session->userdata("user"))
-            ];
 
-            // var_dump($data);
-            $this->load->view("pages/dashboard/viewDonation", $data);
+            // var_dump($this->User->getUserByEmail($this->session->user)[0]->userType);
+            if ($this->User->getUserByEmail($this->session->user)[0]->userType == "1") {
+                $data = [
+                    "title" => "Login Donation Corp.",
+                    "datas" => $this->Donate->getAll()
+                ];
+    
+                // var_dump($data);
+                $this->load->view("pages/dashboard/viewDonation", $data);
+            }else{
+                $data = [
+                    "title" => "Login Donation Corp.",
+                    "datas" => $this->Donate->getByEmail($this->session->userdata("user"))
+                ];
+    
+                // var_dump($data);
+                $this->load->view("pages/dashboard/viewDonation", $data);
+            }
         } else {
             redirect(base_url());
         }

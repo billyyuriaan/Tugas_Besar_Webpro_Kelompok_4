@@ -55,7 +55,11 @@
                 </div>
             <?php endif?>
             <div class="col">
-                <h5>This Is Your Donation History :)</h5>
+                <?php if($this->User->getUserByEmail($this->session->user)[0]->userType == "1") :?>
+                    <h5>Welcome Back Admin, This Is All The Donation From User</h5>
+                <?php else: ?>
+                    <h5>This Is Your Donation History :)</h5>
+                <?php endif ?>
                 <br><br>
                 <table class="table sdw" id="myTable">
                     <thead>
@@ -79,12 +83,21 @@
                         </tr> -->
                         <?php foreach ($datas as $data) :?>
                             <tr>
-                                <th scope="row"><?= $data->donateTO ?></th>
-                                <td><?= $data->ammout?></td>
-                                <td><?= $data->message ?></td>
-                                <td><?= $data->alias ?></td>
-                                <td><?= $data->payMethode ?></td>
-                                <td><?= date("D d/m/Y H:i:s", $data->donateDate / 1000); ?></td>
+                                <?php if($this->User->getUserByEmail($this->session->user)[0]->userType == "1") :?>
+                                    <th scope="row"><?= $data->donateTo ?></th>
+                                    <td><?= $data->ammout?></td>
+                                    <td><?= $data->message ?></td>
+                                    <td><?= $data->alias ?></td>
+                                    <td><?= $data->payMethode ?></td>
+                                    <td><?= $data->donateDate ?></td>
+                                <?php else: ?>
+                                    <th scope="row"><?= $data->donateTO ?></th>
+                                    <td><?= $data->ammout?></td>
+                                    <td><?= $data->message ?></td>
+                                    <td><?= $data->alias ?></td>
+                                    <td><?= $data->payMethode ?></td>
+                                    <td><?= $data->donateDate ?></td>
+                                <?php endif ?>
                             </tr>
                         <?php endforeach?>
                     </tbody>

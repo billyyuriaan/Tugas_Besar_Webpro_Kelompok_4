@@ -49,7 +49,7 @@
     <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 my-3">
             <div class="col">
-                <h5>Welcome To, </h5>
+                <h5>Welcome To, Saweria</h5>
             </div>
             <div class="col"></div>
             <div class="col"></div>
