@@ -64,4 +64,50 @@ class C_Upload extends CI_Controller {
                         }
                 }
         }
+
+        public function updateUser()
+        {
+                $this->form_validation->set_rules("email", "Password", "required");
+                $this->form_validation->set_rules("psasword", "Password", "required");
+
+                $config['upload_path'] = "./assets/uploads";
+                $config['allowed_types'] = "jpg|png|jpeg|gif"; 
+                $config['max_size'] =  1000;
+                $config['max_width'] =  1024;
+                $config['max_height'] =  768;
+
+                $this->load->library('upload', $config);
+
+                if ( ! $this->upload->do_upload('userfile') && $this->form_validation->run() == FALSE)
+                {
+                        $data = [
+                                "title" => "Register Donation Corp.",
+                                "error" => $this->upload->display_errors()
+                        ];
+
+                        $this->load->view('pages/auth/register', $data);
+
+                }else{
+
+                        if ($this->User->checkEmailAvailable($this->input->post("email"))) {
+                                $this->User->update();
+
+                                $data = [
+                                        "message" => "Register Was Successful, now try to login",
+                                        "title" => "Register Donation Corp.",
+                                ];
+
+                                $this->session->set_flashdata("message", "Register Success");
+
+                                $this->load->view("pages/auth/register", $data);
+                        } else {
+                                $data = [
+                                        "title" => "Register Donation Corp.",
+                                        "error" => "User Email Is Already Exist"
+                                ];
+        
+                                $this->load->view('pages/auth/register', $data);
+                        }
+                }
+        }
 }

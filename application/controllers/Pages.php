@@ -46,7 +46,8 @@ class Pages extends CI_Controller{
             if ($this->User->getUserByEmail($this->session->user)[0]->userType == "1") {
                 $data = [
                     "title" => "Login Donation Corp.",
-                    "datas" => $this->Donate->getAll()
+                    "datas" => $this->Donate->getAll(),
+                    "count" => $this->Donate->getCount(date('m'))
                 ];
     
                 // var_dump($data);
@@ -64,5 +65,19 @@ class Pages extends CI_Controller{
             redirect(base_url());
         }
         
+    }
+
+    public function updateUser()
+    {
+        if ($this->session->has_userdata("user")){
+            $data = [
+                "title" => "Update User",
+                "data" => $this->Donate->getByEmail($this->session->userdata("user"))
+            ];
+            
+            $this->load->view("pages/user/updateUser", $data);
+        }else {
+            redirect(base_url());
+        }
     }
 }

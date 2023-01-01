@@ -42,4 +42,12 @@ class Donate extends CI_Model{
 
         $this->db->insert("donate", $data);
     }
+
+    public function getCount($month)
+    {
+        $query = $this->db->query("SELECT MONTH(donateDate) as bulan, COUNT(MONTH(donateDate)) as many FROM donate WHERE MONTH(donateDate) = " . $month . " GROUP BY MONTH(donateDate)");
+
+        return $query->result();
+
+    }
 }
