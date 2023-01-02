@@ -46,6 +46,7 @@ class Pages extends CI_Controller{
                 $data = [
                     "title" => "Login Donation Corp.",
                     "datas" => $this->Donate->getAll(),
+                    "data" => $this->User->getUserByEmail($this->session->userdata("user")),
                     "count" => $this->Donate->getCount(date('m'))
                 ];
     
