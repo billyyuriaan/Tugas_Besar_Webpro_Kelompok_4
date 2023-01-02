@@ -37,8 +37,11 @@
             <div class="col"></div>
             <div class="col"></div>
             <div class="col">
-                <span>Hello, <?= $this->session->user ?></span>
-                <img src="<?= base_url() ?>assets/uploads/gif.gif" alt="Profile Picture" class="avatar">
+                <a href="<?= base_url() ?>userprofile">
+                    <span>Hello, <?= $this->session->user ?></span>
+                    <img src="<?= $data[0]->picture ?>" alt="Profile Picture" class="avatar">
+                </a>
+
             </div>
         </div>
         <br><br><br>
