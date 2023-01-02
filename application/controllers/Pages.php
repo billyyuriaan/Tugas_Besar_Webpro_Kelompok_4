@@ -18,7 +18,6 @@ class Pages extends CI_Controller{
                 "data" => $this->User->getUserByEmail($this->session->userdata("user")),
             ];
 
-            // var_dump($data);
             $this->load->view("pages/dashboard/index", $data);
         }else{
             $data = [
@@ -72,8 +71,9 @@ class Pages extends CI_Controller{
         if ($this->session->has_userdata("user")){
             $data = [
                 "title" => "Update User",
-                "data" => $this->Donate->getByEmail($this->session->userdata("user"))
+                "data" => $this->User->getUserByEmail($this->session->userdata("user"))
             ];
+            
             
             $this->load->view("pages/user/updateUser", $data);
         }else {

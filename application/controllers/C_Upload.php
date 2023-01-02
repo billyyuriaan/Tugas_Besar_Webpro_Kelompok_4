@@ -82,32 +82,23 @@ class C_Upload extends CI_Controller {
                 {
                         $data = [
                                 "title" => "Register Donation Corp.",
-                                "error" => $this->upload->display_errors()
+                                "error" => $this->upload->display_errors(),
+                                "data" => $this->User->getUserByEmail($this->session->userdata("user"))
                         ];
 
-                        $this->load->view('pages/auth/register', $data);
+                        $this->load->view('pages/user/updateUser', $data);
 
                 }else{
+                        $this->User->update();
 
-                        if ($this->User->checkEmailAvailable($this->input->post("email"))) {
-                                $this->User->update();
+                        $data = [
+                                "message" => "Account update Was Successful",
+                                "title" => "Update Donation Corp.",
+                                "data" => $this->User->getUserByEmail($this->session->userdata("user"))
+                        ];
 
-                                $data = [
-                                        "message" => "Register Was Successful, now try to login",
-                                        "title" => "Register Donation Corp.",
-                                ];
 
-                                $this->session->set_flashdata("message", "Register Success");
-
-                                $this->load->view("pages/auth/register", $data);
-                        } else {
-                                $data = [
-                                        "title" => "Register Donation Corp.",
-                                        "error" => "User Email Is Already Exist"
-                                ];
-        
-                                $this->load->view('pages/auth/register', $data);
-                        }
+                        redirect(base_url());
                 }
         }
 }
