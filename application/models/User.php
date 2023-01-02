@@ -81,4 +81,15 @@ class User extends CI_Model{
             return FALSE;
         }
     }
+
+    public function update()
+    {
+        $data = [
+            "email" => $this->input->post("email"),
+            "password" => $this->input->post("password"),
+        ];
+
+        $this->db->where("userId", $this->input->post("userId"));
+        $this->db->update("user", $data);
+    }
 }

@@ -49,7 +49,6 @@
     <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 my-3">
             <div class="col">
-                
                 <a href="<?= base_url() ?>logout" class="btn btn-sdw" style="margin-right: 7px; align-item: center; border: 1px solid #000;">Log Out</a>
                 <a href="<?= base_url() ?>history" class="btn btn-sdw-aqua">History</a>
             </div>
@@ -92,6 +91,7 @@
                         <label for="message" class="form-label">Message : <span style="color: red;">*</span></label>
                         <input type="text" name="message" id="message" class="form" placeholder="Aku Alex">
                     </div>
+                    <input type="number" name="time" id="time" value="<?= time() ?>" hidden>
                     <div class="form-margin text-end">
                         <button type="submit" class="btn btn-sdw-aqua">Donate</button>
                     </div>
