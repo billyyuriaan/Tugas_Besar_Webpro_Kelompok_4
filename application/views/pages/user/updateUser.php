@@ -39,8 +39,9 @@
             <div class="col">
                 <br>
                 <br>
-                <h1 class="text-center">Register Page</h1>
-                <?php echo form_open_multipart('C_Upload/do_upload'); ?>
+                <h1 class="text-center">Update Profile</h1>
+                <?php echo form_open_multipart('C_Upload/updateUser'); ?>
+                    <input type="text" name="userId" id="userId" value="<?= $data[0]->userId ?>" hidden>
                     <?php if (isset($error)) :?>
                         <div class="alert alert-warning" role="alert">
                             <?= $error ?>

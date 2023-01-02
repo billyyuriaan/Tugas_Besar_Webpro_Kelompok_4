@@ -6,6 +6,7 @@ class User extends CI_Model{
 
         $this->load->database();
         $this->load->library("session");
+        $this->load->library("session");
     }
 
     public function createUser()
@@ -86,9 +87,11 @@ class User extends CI_Model{
     {
         $data = [
             "email" => $this->input->post("email"),
-            "password" => $this->input->post("password"),
+            "password" => sha1($this->input->post("password")),
+            "picture" => "http://localhost:8000/assets/uploads/" . $_FILES['userfile']['name']
         ];
 
+        $this->session->set_userdata("user", $this->input->post("email"));
         $this->db->where("userId", $this->input->post("userId"));
         $this->db->update("user", $data);
     }
