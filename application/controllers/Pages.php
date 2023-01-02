@@ -55,7 +55,8 @@ class Pages extends CI_Controller{
             }else{
                 $data = [
                     "title" => "Login Donation Corp.",
-                    "datas" => $this->Donate->getByEmail($this->session->userdata("user"))
+                    "datas" => $this->Donate->getByEmail($this->session->userdata("user")),
+                    "data" => $this->User->getUserByEmail($this->session->userdata("user"))
                 ];
     
                 // var_dump($data);
