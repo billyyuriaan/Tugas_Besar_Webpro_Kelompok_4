@@ -59,6 +59,22 @@
             </div>
         </div>
         <br><br><br>
+        <div class="row justify-content-center my-3">
+            <div class="carousel-container">
+                <img class="carousel-image active" src="<?= base_url() ?>assets/images/Gambar1.jpg" alt="Image 1">
+                <img class="carousel-image" src="<?= base_url() ?>assets/images/Gambar2.jpg" alt="Image 2">
+                <img class="carousel-image" src="<?= base_url() ?>assets/images/Gambar3.jpg" alt="Image 3">
+                <img class="carousel-image" src="<?= base_url() ?>assets/images/Gambar4.jpg" alt="Image 4">
+
+                <div class="carousel-indicators">
+                    <span class="active"></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+        <br><br><br>
         <div class="row justify-content-center my-3 sdw-azure">
             <div class="col">
                 <form action="">
@@ -106,6 +122,7 @@
                 </div>
             </div>
         </footer>
-    </div>    
+    </div>
+    <script src="<?= base_url() ?>assets/js/index.js"></script>
 </body>
 </html>
