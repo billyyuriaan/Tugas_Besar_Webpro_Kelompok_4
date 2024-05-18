@@ -65,4 +65,49 @@
     height: 50px;
     border-radius: 50%;
     box-shadow: 5px 5px;
-  }
+}
+
+.carousel-container {
+    width: 800px;
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto;
+}
+
+.carousel-image {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    border-radius: 20px;
+}
+
+.carousel-image.active {
+    opacity: 1;
+}
+
+.carousel-indicators {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+.carousel-indicators span {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #bbb;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.carousel-indicators span.active {
+    background-color: #555;
+}
